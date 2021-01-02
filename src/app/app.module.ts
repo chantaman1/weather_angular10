@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 
-//we add the service for the api.
 import { HttpClientModule } from "@angular/common/http";
-import { WebSocketService } from "./websocket.service";
+
+const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { WebSocketService } from "./websocket.service";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SocketIoModule.forRoot(config)
   ],
-  providers: [WebSocketService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

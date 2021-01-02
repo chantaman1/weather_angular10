@@ -17,8 +17,6 @@ export class WeatherComponent implements OnInit {
   ngOnInit(): void {
     this.websocketService.onNewMessage().subscribe( (weatherData:any) => {
       this.weatherOnCities = weatherData;
-      console.log(weatherData);
     });
-
   }
 }
